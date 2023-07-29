@@ -8,7 +8,7 @@ import IconSection from '../Icons/icon';
 const Card = ({ post }) => {
   return (
     <div className={styles.card}>
-      <ProfileSection username={post.username} />
+      <ProfileSection post={post} ShowName={true} />
       <ImageSection />
       <div className={styles.content}>
         <IconSection />
