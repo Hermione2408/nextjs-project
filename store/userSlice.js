@@ -3,7 +3,7 @@ import { HYDRATE } from "next-redux-wrapper";
 
 // Initial state
 const initialState = {
-  userState: false,
+  userState: {},
 };
 
 // Actual Slice

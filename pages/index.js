@@ -11,7 +11,8 @@ export default function Home({isMobileView}) {
      { !isMobileView && <NavBarDesktop />}
      <div className={styles.home}>
       <HomeFeed/>
-      <NavBarMobile/>
+      {isMobileView && <NavBarMobile/>}
+      {/* <NavBarMobile/> */}
      </div>
      {!isMobileView && <SideBarDesktop/>}
     </div>
