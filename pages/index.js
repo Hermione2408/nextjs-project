@@ -4,15 +4,16 @@ import NavBarDesktop from '../components/NavBarDesktop/navBarDesktop';
 import SideBarDesktop from '../components/SideBarDesktop/sideBarDesktop';
 import HomeFeed from '../components/HomeFeed/homeFeed';
 import NavBarMobile from '../components/NavBarMobile/navBarMobile';
-export default function Home() {
+export default function Home({isMobileView}) {
+  console.log(isMobileView)
   return (
     <div className={styles.container}>
-     <NavBarDesktop />
+     { !isMobileView && <NavBarDesktop />}
      <div className={styles.home}>
       <HomeFeed/>
       <NavBarMobile/>
      </div>
-     <SideBarDesktop/>
+     {!isMobileView && <SideBarDesktop/>}
     </div>
   )
 }
