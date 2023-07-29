@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ErrorBoundary from '../components/ErrorBoundary/errorBoundary';
 
 function MyApp({ Component, pageProps }) {
   const [isMobileView, setIsMobileView] = useState(false);
@@ -15,7 +16,9 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <Component {...pageProps} isMobileView={isMobileView} />
+    <ErrorBoundary>
+      <Component {...pageProps} isMobileView={isMobileView} />
+    </ErrorBoundary>
   );
 }
 

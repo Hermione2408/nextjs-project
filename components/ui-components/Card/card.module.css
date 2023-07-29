@@ -1,0 +1,39 @@
+.card {
+    width: 300px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+  }
+  
+  .header {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+  }
+  
+  .profilePic {
+    width: 32px;
+    height: 32px;
+    background-color: #dbdbdb;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  
+  .image {
+    width: 100%;
+    height: 300px;
+    background-color: #dbdbdb;
+  }
+  
+  .content {
+    padding: 16px;
+  }
+  
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .icon {
+    margin-right: 16px;
+  }

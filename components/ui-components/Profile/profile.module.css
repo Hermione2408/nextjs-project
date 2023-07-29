@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+}
+
+.profilePic {
+    width: 32px;
+    height: 32px;
+    background-color: #dbdbdb;
+    border-radius: 50%;
+    margin-right: 12px;
+}
