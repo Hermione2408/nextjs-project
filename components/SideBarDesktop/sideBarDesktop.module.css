@@ -1,0 +1,5 @@
+.container{
+    height: 100%;
+    border: 1px solid green;
+    flex: 2;
+}
