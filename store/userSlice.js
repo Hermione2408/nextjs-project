@@ -1,12 +1,30 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
-
+import axios from "axios";
 // Initial state
 const initialState = {
   userState: {},
   photos:{loadedAt:"",
   data:[]}
 };
+
+export const fetchPhotos = createAsyncThunk('user/fetchPhotos', async () => {
+  console.log('2')
+
+  const response = await axios.get('https://api.unsplash.com/photos/random', {
+    params: { count: 10 },
+    headers: {
+      Authorization: `Client-ID ${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
+    }
+  });
+
+  if (response.status !== 200) {
+    throw new Error('Failed to fetch photos');
+  }
+  console.log(response.data,"RESP")
+  setPhotos(response.data)
+  return response.data;
+});
 
 // Actual Slice
 export const userSlice = createSlice({
@@ -18,6 +36,7 @@ export const userSlice = createSlice({
       state.userState = action.payload;
     },
     setPhotos(state,action){
+      console.log(3,action)
       state.photos ={loadedAt:new Date.now(),data:[action.payload]};
     }
   },
@@ -31,6 +50,12 @@ export const userSlice = createSlice({
         ...action.payload.user,
       };
     },
+    [fetchPhotos.fulfilled]:(state,action)=>{
+      return{
+        ...state,
+        photos:{loadedAt: Date.now(), data: [...state.photos.data,...action.payload]}
+      }
+    }
   },
 });
 

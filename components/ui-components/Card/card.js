@@ -6,10 +6,14 @@ import ImageSection from '../Image/image';
 import IconSection from '../Icons/icon';
 
 const Card = ({ post }) => {
+
+    console.log(post,"POST")
+    let user_profileimg = post.user.profile_image.small
+    let user_username = post.user.instagram_username
   return (
     <div className={styles.card}>
-      <ProfileSection post={post} ShowName={true} />
-      <ImageSection />
+      <ProfileSection image={user_profileimg} username={user_username} ShowName={true} />
+      <ImageSection url={post.urls.small_s3} />
       <div className={styles.content}>
         <IconSection />
         <div><strong>{post.likes}</strong> likes</div>

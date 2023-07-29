@@ -1,13 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { userSlice } from "./userSlice";
-import { createWrapper } from "next-redux-wrapper";
 
-const makeStore = () =>
-  configureStore({
+const store= configureStore({
     reducer: {
       [userSlice.name]: userSlice.reducer,
     },
     devTools: true,
   });
 
-export const wrapper = createWrapper(makeStore);
+export default store

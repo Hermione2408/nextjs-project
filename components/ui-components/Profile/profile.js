@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from "./profile.module.css"
 
-const ProfileSection = ({ post,ShowName }) => (
+const ProfileSection = ({ image,username,ShowName }) =>{
+    return(
     <div className={styles.header}>
-        <div className={styles.profilePic}></div> {/* Profile picture placeholder */}
-        {ShowName && <div>{post.username}</div>}
-    </div>
-);
+        <img src={image} className={styles.profilePic} />
+        {ShowName && <div>{username}</div>}
+    </div>)
+};
 
 export default ProfileSection;

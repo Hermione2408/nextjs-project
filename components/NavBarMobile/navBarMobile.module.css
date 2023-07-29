@@ -1,5 +1,8 @@
 .container{
-    border: 1px solid pink;
-    position: fixed;
+     border: 1px solid pink;
+    position: sticky;
     bottom: 0px;
+    background: red;
+    height: 36px;
+    width: 100%;
 }

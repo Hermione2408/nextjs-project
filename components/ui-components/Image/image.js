@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from "./image.module.css"
 
-const ImageSection = () => (
-  <div className={styles.image}></div> 
+const ImageSection = ({url}) => (
+  <div className={styles.image}>
+    <img src={url} />
+  </div> 
 );
 
 export default ImageSection;
