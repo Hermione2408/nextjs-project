@@ -7,7 +7,6 @@ import IconSection from '../Icons/icon';
 
 const Card = ({ post }) => {
 
-    console.log(post,"POST")
     let user_profileimg = post.user.profile_image.small
     let user_username = post.user.instagram_username
   return (

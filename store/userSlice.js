@@ -1,15 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import axios from "axios";
-// Initial state
+import moment from "moment"
 const initialState = {
   userState: {},
   photos:{loadedAt:"",
   data:[]}
 };
 
-export const fetchPhotos = createAsyncThunk('user/fetchPhotos', async () => {
-  console.log('2')
+export const fetchPhotos = createAsyncThunk('user/fetchPhotos', async (type, { getState }) => {
+  const { loadedAt,data } = getState().user.photos;
+  console.log('hey',type)
+
+  if (!type=='refetch' && loadedAt && moment().diff(loadedAt, 'minutes') < 1) {
+    return data;
+  }
 
   const response = await axios.get('https://api.unsplash.com/photos/random', {
     params: { count: 10 },
@@ -22,7 +27,6 @@ export const fetchPhotos = createAsyncThunk('user/fetchPhotos', async () => {
     throw new Error('Failed to fetch photos');
   }
   console.log(response.data,"RESP")
-  setPhotos(response.data)
   return response.data;
 });
 

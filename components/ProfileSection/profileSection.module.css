@@ -1,0 +1,21 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .postGrid,
+  .postList {
+    margin-bottom: 20px;
+  }
+  
+  .postList {
+    display: flex;
+    align-items: center;
+  }
+  
