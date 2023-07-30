@@ -14,7 +14,7 @@ export default function Home({isMobileView}) {
   const fetchMorePhotos = () => {
     console.log('1111')
     return new Promise((resolve, reject) => {
-      dispatch(fetchPhotos())
+      dispatch(fetchPhotos('refetch'))
         .then(() => {
           console.log('Fetched more photos');
           resolve();
@@ -25,23 +25,23 @@ export default function Home({isMobileView}) {
         });
     });
   }
-  
+  useEffect(()=>{
+    fetchMorePhotos()
+  },[])
   const { data: posts } = photos;
   console.log(photos,"222")
 
   return (
     <div className={styles.container}>
-     { !isMobileView && <NavBarDesktop />}
+     { !isMobileView && <NavBarDesktop className={styles.navbarDesktop} />}
      <div className={styles.home}>
       <div className={styles.homeFeed}>
-      <HomeFeed data={posts} fetchingFunction={fetchMorePhotos} />
+      {(posts&&posts.length>0) &&<HomeFeed isMobileView={isMobileView} data={posts} fetchingFunction={fetchMorePhotos} />}
       </div>
       <div>
       {isMobileView && <NavBarMobile/>}
       </div>
-      {/* <NavBarMobile/> */}
      </div>
-     {!isMobileView && <SideBarDesktop/>}
     </div>
   )
 }

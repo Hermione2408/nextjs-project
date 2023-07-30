@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import NavBarDesktop from '../../components/NavBarDesktop/navBarDesktop';
 import SideBarDesktop from '../../components/SideBarDesktop/sideBarDesktop';
+import NavbarDesktop from '../../components/Sidebar/index';
 import NavBarMobile from '../../components/NavBarMobile/navBarMobile';
 import ProfileSection from '../../components/ProfileSection/profileSection';
 import ProfileStats from '../../components/ProfileStats';
@@ -35,7 +35,7 @@ export default function Page({isMobileView}) {
   },[router.query])
   return (
     <div className={styles.container}>
-    { !isMobileView && <NavBarDesktop />}
+    { !isMobileView && <NavbarDesktop />}
     <div className={styles.home}>
      {Object.keys(userDetails).length>0 && <ProfileSection userData={userDetails} photosData={userDetails.photos} />}
     </div>

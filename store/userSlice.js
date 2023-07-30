@@ -15,7 +15,6 @@ const initialState = {
 export const fetchPhotos = createAsyncThunk('user/fetchPhotos', async (type, { getState }) => {
   const { loadedAt,data } = getState().user.photos;
   console.log('hey',type)
-
   if (!type=='refetch' && loadedAt && moment().diff(loadedAt, 'minutes') < 1) {
     return data;
   }

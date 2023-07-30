@@ -1,8 +1,9 @@
 import styles from "./profileFeed.module.css"
-const ProfileFeed = ()=>{
+import HomeFeed from "../HomeFeed/homeFeed"
+const ProfileFeed = ({data})=>{
     return(
         <div className={styles.container}>
-            List view
+            <HomeFeed data={data} />
         </div>
     )
 }

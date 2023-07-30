@@ -1,12 +1,21 @@
 .container {
   height: 100vh;
   display: flex;
+  flex-direction: column;
 }
+
+.navbarDesktop {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
 .home{
   flex: 6;
   height: 100%;
   overflow: hidden;
 }
+
 .homeFeed{
   height: calc(100% - 50px);
 }

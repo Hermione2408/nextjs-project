@@ -1,4 +1,4 @@
-import styles from './navBarDesktop.module.css';
+import styles from './sidebar.module.css';
 import Image from 'next/image'
 import Logo from '../../assets/img/svg/Instagram_logo.svg.png';
 import Home from '../../assets/img/svg/home.png';
@@ -11,23 +11,17 @@ const NavBarDesktop = () => {
             <div>
             <Image className={styles.icon} src={Logo} width={103} height={32} alt="Logo" />
             </div>
-            <div className={styles.iconContainer}>
             <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Home} width={24} height={24} alt="Home" />
-            <span>Home</span>
-            </div>
-            <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Create} width={24} height={24} alt="Create" />
-            <span>Create</span>
-            </div>  
-            <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Reels} width={24} height={24} alt="Reels" />
-            <span>Reels</span>
+            <Image className={styles.icon} src={Home} width={24} height={24} alt="Home" />Home
             </div>
             <div className={styles.subcontainer}>
             <Image className={styles.icon} src={Search} width={24} height={24} alt="Search" />
-            <span>Search</span>
             </div>
+            <div className={styles.subcontainer}>
+            <Image className={styles.icon} src={Create} width={24} height={24} alt="Create" />
+            </div>  
+            <div className={styles.subcontainer}>
+            <Image className={styles.icon} src={Reels} width={24} height={24} alt="Reels" />
             </div>
                         </div>
     );

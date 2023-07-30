@@ -5,3 +5,40 @@
     align-items: center;
     overflow-y:scroll;
 }
+
+  
+  .masonry > * {
+    break-inside: avoid;
+    width: 100%;
+  }
+
+  .scrollableContainerDesktop {
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 10px;
+  }
+  
+  .masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    grid-gap:0 10px;
+  }
+  
+  .masonryCardWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 1200px) {
+    .masonry {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .masonry {
+      grid-template-columns: 1fr;
+    }
+  }
+  

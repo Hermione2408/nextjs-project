@@ -4,7 +4,7 @@ const ProfileMain = ({data})=>{
 
     console.log(data,"profile main")
     const {username,name,bio} = data
-    const imageUrl = data.profile_image.medium
+    const imageUrl = data && data.profile_image &&  data.profile_image.medium
     return(
         <div className={styles.container}>
             <div className={styles.imageAndStats}>

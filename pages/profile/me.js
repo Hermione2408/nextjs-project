@@ -1,4 +1,4 @@
-import NavBarDesktop from '../../components/NavBarDesktop/navBarDesktop';
+import NavbarDesktop from '../../components/Sidebar/index';
 import SideBarDesktop from '../../components/SideBarDesktop/sideBarDesktop';
 import NavBarMobile from '../../components/NavBarMobile/navBarMobile';
 import ProfileSection from '../../components/ProfileSection/profileSection';

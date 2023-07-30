@@ -1,6 +1,5 @@
-// Card.js
 import React, { useEffect } from 'react';
-import styles from "./card.module.css"
+import styles from "./cardDesktop.module.css"
 import ProfileSection from '../UserIcon/index.js';
 import ImageSection from '../Image/image';
 import IconSection from '../Icons/icon';
@@ -9,7 +8,7 @@ import Link from 'next/link';
 import axios from 'axios';
 // import axios from "axios";
 
-const Card = ({ post,id }) => {
+const CardDesktop = ({ post,id }) => {
   console.log(post, "POST")
   let user_profileimg = post && post.user && post.user.profile_image &&post.user.profile_image.small || ""
   let user_username = post && post.user && post.user.username || ""
@@ -47,4 +46,4 @@ const Card = ({ post,id }) => {
   );
 };
 
-export default Card;
+export default CardDesktop;
