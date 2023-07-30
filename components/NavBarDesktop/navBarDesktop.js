@@ -5,31 +5,34 @@ import Home from '../../assets/img/svg/home.png';
 import Search from '../../assets/img/svg/search.png';
 import Create from '../../assets/img/svg/create.png';
 import Reels from '../../assets/img/svg/reels.png';
+
 const NavBarDesktop = () => {
     return (
         <div className={styles.container}>
-            <div>
-            <Image className={styles.icon} src={Logo} width={103} height={32} alt="Logo" />
+            <div className={styles.logoContainer}>
+                <Image className={styles.icon} src={Logo} width={103} height={32} alt="Logo" />
+            </div>
+            <div className={styles.searchBox}>
+                <input type="text" placeholder="Search" className={styles.searchInput}/>
+                <div className={styles.searchIcon}>
+                    <Image className={styles.icon} src={Search} width={24} height={24} alt="Search" />
+                </div>
             </div>
             <div className={styles.iconContainer}>
-            <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Home} width={24} height={24} alt="Home" />
-            <span>Home</span>
+                <div className={styles.subcontainer}>
+                    <Image className={styles.icon} src={Home} width={24} height={24} alt="Home" />
+                    <span>Home</span>
+                </div>
+                <div className={styles.subcontainer}>
+                    <Image className={styles.icon} src={Create} width={24} height={24} alt="Create" />
+                    <span>Create</span>
+                </div>  
+                <div className={styles.subcontainer}>
+                    <Image className={styles.icon} src={Reels} width={24} height={24} alt="Reels" />
+                    <span>Reels</span>
+                </div>
             </div>
-            <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Create} width={24} height={24} alt="Create" />
-            <span>Create</span>
-            </div>  
-            <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Reels} width={24} height={24} alt="Reels" />
-            <span>Reels</span>
-            </div>
-            <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Search} width={24} height={24} alt="Search" />
-            <span>Search</span>
-            </div>
-            </div>
-                        </div>
+        </div>
     );
 };
 
