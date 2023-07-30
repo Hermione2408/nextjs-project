@@ -1,8 +1,18 @@
 .container{
-    border: 1px solid pink;
-    position: sticky;
+    border-top: 1px solid rgb(219, 219, 219);
+    position: fixed;   /* changed from sticky to fixed */
     bottom: 0px;
-    background: red;
-    height: 36px;
+    background: white;
+    height: 48px;
     width: 100%;
+    z-index: 100;  
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; 
+}
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
 }
