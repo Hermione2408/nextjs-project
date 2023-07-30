@@ -8,7 +8,7 @@ import Bookmark from '../../../assets/img/svg/bookmark.png';
 import Share from '../../../assets/img/svg/send.png';
 
 // import LikeIcon from '../../../assets/img/svg/like.svg'
-const IconSection = ({postLiked}) => (
+const IconSection = ({postLiked, onLike}) => (
   <div className={styles.icons}>
     <div>
       {/* <img src={LikeIcon} alt='Like Icon' />   */}
@@ -18,6 +18,8 @@ const IconSection = ({postLiked}) => (
          width={24}
          height={24}
          alt="Likes"
+         onClick={onLike} 
+
        />):
        
     (  <Image className={styles.icon}
@@ -25,6 +27,7 @@ const IconSection = ({postLiked}) => (
         width={24}
         height={24}
         alt="Likes"
+        onClick={onLike} 
       />)
        }
       <Image className={styles.icon}
