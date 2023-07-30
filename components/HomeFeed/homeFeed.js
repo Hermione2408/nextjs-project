@@ -5,8 +5,24 @@ import CardDesktop from '../ui-components/CardDesktop/index';
 import Loading from '../Loading/loading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-const HomeFeed = ({fetchingFunction, data, isMobileView}) => {
+const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true}) => {
     console.log(isMobileView,"MOB")
+    const [columnData,setColumnData] = useState([])
+  useEffect(()=>{
+    let width = window.innerWidth
+    let totalColumns = Math.floor(width/300)
+    const distributeElements = (array, columns) => {
+      let result = Array.from({ length: columns }, () => []);
+      for(let i = 0; i < array.length; i++) {
+          result[i % columns].push(array[i]);
+      }
+      return result;
+  }
+  
+  const columns = distributeElements(data, totalColumns);
+  setColumnData(columns)
+  },[window.innerWidth])
+  
   return (
     <>
     {isMobileView?
@@ -15,7 +31,7 @@ const HomeFeed = ({fetchingFunction, data, isMobileView}) => {
       <InfiniteScroll
       dataLength={data.length}
       next={fetchingFunction}
-      hasMore={true}
+      hasMore={loadMore}
       loader={<Loading />}
       endMessage={<p>No more data to load.</p>}
       scrollableTarget="scrollableDiv"
@@ -29,19 +45,20 @@ const HomeFeed = ({fetchingFunction, data, isMobileView}) => {
       <InfiniteScroll
         dataLength={data.length}
         next={fetchingFunction}
-        hasMore={true}
+        hasMore={loadMore}
         loader={<Loading />}
-        endMessage={<p>No more data to load.</p>}
         scrollableTarget="scrollableDivDesktop"
       > 
         <div className={styles.masonry}>
-          {data.map((post) => {
-            return (
-              <div className={styles.masonryCardWrapper}>
-                <CardDesktop key={post.id} post={post} id={post.id} />
-              </div>
-            );
-          })}
+        {columnData.map((col, i) => (
+                <div key={i} className={styles.column}>
+                  {col.map((post) => (
+                    <div key={post.id} className={styles.masonryCardWrapper}>
+                      <CardDesktop post={post} id={post.id} />
+                    </div>
+                  ))}
+                </div>
+              ))}
         </div>
       </InfiniteScroll>
     </div>

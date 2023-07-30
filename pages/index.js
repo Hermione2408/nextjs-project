@@ -5,12 +5,13 @@ import HomeFeed from '../components/HomeFeed/homeFeed';
 import NavBarMobile from '../components/NavBarMobile/navBarMobile';
 import { fetchPhotos } from '../store/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
+import Loading from '../components/Loading/loading';
 export default function Home({isMobileView}) {
   console.log(isMobileView)
   const dispatch = useDispatch();
   const { photos } = useSelector((state) => state.user);
+  const [loading,setLoading] = useState(true)
   const fetchMorePhotos = () => {
     console.log('1111')
     return new Promise((resolve, reject) => {
@@ -22,7 +23,10 @@ export default function Home({isMobileView}) {
         .catch((error) => {
           console.error('Error fetching more photos', error);
           reject(error);
-        });
+        })
+        .finally(()=>{
+          setLoading(false)
+        })
     });
   }
   useEffect(()=>{
@@ -32,7 +36,8 @@ export default function Home({isMobileView}) {
   console.log(photos,"222")
 
   return (
-    <div className={styles.container}>
+    <>
+    {loading ? <Loading /> :<div className={styles.container}>
      { !isMobileView && <NavBarDesktop className={styles.navbarDesktop} />}
      <div className={styles.home}>
       <div className={styles.homeFeed}>
@@ -42,6 +47,7 @@ export default function Home({isMobileView}) {
       {isMobileView && <NavBarMobile/>}
       </div>
      </div>
-    </div>
+    </div>}
+    </>
   )
 }

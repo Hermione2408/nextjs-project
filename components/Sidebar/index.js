@@ -11,17 +11,25 @@ const NavBarDesktop = () => {
             <div>
             <Image className={styles.icon} src={Logo} width={103} height={32} alt="Logo" />
             </div>
+            <div className={styles.icons}>
             <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Home} width={24} height={24} alt="Home" />Home
+            <Image className={styles.icon} src={Home} width={24} height={24} alt="Home" />
+            <span className={styles.iconName}>Home</span>
             </div>
             <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Search} width={24} height={24} alt="Search" />
+            <Image className={styles.icon} src={Search} width={24} height={24} alt="Search" /> 
+            <span className={styles.iconName}>Search</span>
             </div>
             <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Create} width={24} height={24} alt="Create" />
+            <Image className={styles.icon} src={Create} width={24} height={24} alt="Create" /> 
+            <span className={styles.iconName}>Create</span>
+
             </div>  
             <div className={styles.subcontainer}>
-            <Image className={styles.icon} src={Reels} width={24} height={24} alt="Reels" />
+            <Image className={styles.icon} src={Reels} width={24} height={24} alt="Reels" /> 
+            <span className={styles.iconName}>Reels</span>
+
+            </div>
             </div>
                         </div>
     );
