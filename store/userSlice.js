@@ -20,7 +20,7 @@ export const fetchPhotos = createAsyncThunk('user/fetchPhotos', async (type, { g
   }
 
   const response = await axios.get('https://api.unsplash.com/photos/random', {
-    params: { count: 10 },
+    params: { count: 8 },
     headers: {
       Authorization: `Client-ID ${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
     }
