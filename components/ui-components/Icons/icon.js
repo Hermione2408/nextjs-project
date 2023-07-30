@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Like from '../../../assets/img/svg/like.png';
 import Liked from '../../../assets/img/svg/liked.png';
 import Comment from '../../../assets/img/svg/comment.png';
-import Bookmark from '../../../assets/img/svg/bookmark.png';
+import Bookmark from '../../../assets/img/svg/bookmark.svg';
 import Share from '../../../assets/img/svg/send.png';
 
 // import LikeIcon from '../../../assets/img/svg/like.svg'
@@ -17,7 +17,7 @@ const IconSection = ({postLiked, onLike}) => (
          src={Liked}
          width={24}
          height={24}
-         alt="Likes"
+         alt="Likes filled"
          onClick={onLike} 
 
        />):

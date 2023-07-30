@@ -9,7 +9,7 @@ const ProfileMain = ({data})=>{
         <div className={styles.container}>
             <div className={styles.imageAndStats}>
                 <div className={styles.profileImg}>
-                <Image src={imageUrl} height={77} width={77} className={styles.image}/>
+                <Image alt="profile" src={imageUrl} height={77} width={77} className={styles.image}/>
                 </div>
                 <div className={styles.stats}>
                     <div>{username}</div>

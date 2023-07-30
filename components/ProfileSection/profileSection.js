@@ -3,54 +3,40 @@ import styles from './profileSection.module.css'; // Add your styles
 import ProfileHeaderMob from '../../components/ProfileHeaderMob';
 import ProfileStats from '../../components/ProfileStats';
 import ProfileMain from '../ProfileMain';
-// Mock Data
-const posts = [
-  // Add your post objects here. For example:
-  { id: 1, image: '...', caption: '...' },
-  { id: 2, image: '...', caption: '...' },
-  // ...
-];
+import ViewSwitcher from "../ViewSwitcher/index";
+import BookmarkPhotos from '../BookmarkPhotos';
+import TaggedPhotos from '../TaggedPhotos';
+import PhotosGridView from '../PhotosGridView';
+import ProfileFeed from "../ProfileFeed/index"
+
+
+
 
 const ProfileSection = ({userData}) => {
   const [view, setView] = useState('grid'); // grid or list
-
+  const [selectedTab,setSelectedTab] = useState('list')
   const switchView = () => {
     setView(view === 'grid' ? 'list' : 'grid');
   };
-
+  const switchFunction = (tab)=>{
+    setSelectedTab(tab)
+  }
+  console.log(selectedTab,"SELECTED T")
   return (
     <div>
       {/* Profile Information */}
       <ProfileHeaderMob data={userData} />
       <ProfileMain data={userData} />
       <ProfileStats data={userData} />
-      <button onClick={switchView}>Switch View</button>
+      <ViewSwitcher selectedTab={selectedTab} switchViewFunction={switchFunction} />
 
-      {/* Post Section */}
-      <div className={view === 'grid' ? styles.grid : styles.list}>
-        {posts.map((post) => (
-          <Post key={post.id} post={post} view={view} />
-        ))}
-      </div>
+      {
+        selectedTab == 'grid'? <PhotosGridView /> : (selectedTab == 'list' ? <ProfileFeed /> : (selectedTab == 'tagged' ? <TaggedPhotos /> : <BookmarkPhotos />))
+      }
+      
     </div>
   );
 };
 
-const Post = ({ post, view }) => {
-  if (view === 'grid') {
-    return (
-      <div className={styles.postGrid}>
-        <img src={post.image} alt={post.caption} />
-      </div>
-    );
-  } else {
-    return (
-      <div className={styles.postList}>
-        <img src={post.image} alt={post.caption} />
-        <p>{post.caption}</p>
-      </div>
-    );
-  }
-};
 
 export default ProfileSection;
