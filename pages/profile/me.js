@@ -4,32 +4,23 @@ import NavBarDesktop from '../../components/NavBarDesktop/navBarDesktop';
 import SideBarDesktop from '../../components/SideBarDesktop/sideBarDesktop';
 import NavBarMobile from '../../components/NavBarMobile/navBarMobile';
 import ProfileSection from '../../components/ProfileSection/profileSection';
-import ProfileStats from '../../components/ProfileStats';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { fetchSelfDetails } from '../../store/userSlice';
+import { useDispatch } from 'react-redux';
 export default function Page({isMobileView}) {
   console.log("profile")
-  const router = useRouter()
-  let id = router.query.id
-  const [userDetails,setUserDetails]=useState({})
-
-  const fetchDetails = async(id)=>{
-    const response = await axios.get(`https://api.unsplash.com/users/me`, {
-    params: { count: 10 },
-    headers: {
-      Authorization: `Client-ID ${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
+  const { userState } = useSelector((state) => state.user);
+  console.log(userState,"nncn")
+  const dispatch = useDispatch()
+  const fetchUserDetails = ()=>{
+    if(!userState.data){
+        dispatch(fetchSelfDetails())
     }
-  });
-
-  if (response.status !== 200) {
-    throw new Error('Failed to fetch photos');
   }
-  setUserDetails(response.data)
-  return ;
-  }
-
   useEffect(()=>{
-    fetchDetails(id)
+    fetchUserDetails()
   },[])
   return (
     <div className={styles.container}>
@@ -42,3 +33,5 @@ export default function Page({isMobileView}) {
    </div>
   )
 }
+
+

@@ -3,7 +3,10 @@ import { HYDRATE } from "next-redux-wrapper";
 import axios from "axios";
 import moment from "moment"
 const initialState = {
-  userState: {},
+  userState: {
+    loadedAt:'',
+    data:null
+  },
   photos:{loadedAt:"",
   data:[]}
 };
@@ -30,6 +33,19 @@ export const fetchPhotos = createAsyncThunk('user/fetchPhotos', async (type, { g
   return response.data;
 });
 
+export const fetchSelfDetails = createAsyncThunk('user/selfDetails',async(type,{getState})=>{
+  const {loadedAt,data} = getState().user.userState;
+  const response = await axios.get('https://api.unsplash.com/users/hermione_2408',{
+    headers:{
+      Authorization: `Client ID ${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
+    }
+  });
+  if (response.status !== 200) {
+    throw new Error('Failed to fetch photos');
+  }
+  console.log(response.data,"RESP")
+  return response.data;
+})
 // Actual Slice
 export const userSlice = createSlice({
   name: "user",
@@ -58,6 +74,12 @@ export const userSlice = createSlice({
       return{
         ...state,
         photos:{loadedAt: Date.now(), data: [...state.photos.data,...action.payload]}
+      }
+    },
+    [fetchSelfDetails.fulfilled]:(state,action)=>{
+      return{
+        ...state,
+        userState:{loadedAt:Date.now(),data:action.payload}
       }
     }
   },

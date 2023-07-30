@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import styles from './Profile.module.css'; // Add your styles
-
+import styles from './profileSection.module.css'; // Add your styles
+import ProfileHeaderMob from '../../components/ProfileHeaderMob';
+import ProfileStats from '../../components/ProfileStats';
+import ProfileMain from '../ProfileMain';
 // Mock Data
 const posts = [
   // Add your post objects here. For example:
@@ -19,7 +21,9 @@ const ProfileSection = () => {
   return (
     <div>
       {/* Profile Information */}
-      <h1>Instagram User</h1>
+      <ProfileHeaderMob />
+      <ProfileMain />
+      <ProfileStats />
       <button onClick={switchView}>Switch View</button>
 
       {/* Post Section */}

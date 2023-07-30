@@ -1,7 +1,7 @@
 // Card.js
 import React from 'react';
 import styles from "./card.module.css"
-import ProfileSection from '../Profile/profile';
+import ProfileSection from '../UserIcon/index.js';
 import ImageSection from '../Image/image';
 import IconSection from '../Icons/icon';
 import {useState} from 'react';
@@ -29,7 +29,9 @@ const Card = ({ post }) => {
   }
   return (
     <div className={styles.card}>
+      <div className={styles.profileHeader}>  
       <ProfileSection image={user_profileimg} username={user_username} ShowName={true} />
+      </div>
       <ImageSection url={post.urls.small_s3} />
       <div className={styles.content}>
         <IconSection postLiked={postLiked} onLike={handleLike}/>
