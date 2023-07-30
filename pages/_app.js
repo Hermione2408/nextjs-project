@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ErrorBoundary from '../components/ErrorBoundary/errorBoundary';
 import { Provider } from "react-redux";
 import store from '../store/store';
+import "../styles/globals.css"
 function MyApp({ Component, pageProps }) {
     const [isMobileView, setIsMobileView] = useState(false);
     

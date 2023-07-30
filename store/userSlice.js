@@ -5,7 +5,44 @@ import moment from "moment"
 const initialState = {
   userState: {
     loadedAt:'',
-    data:null
+    data:{
+      "id": "eXEoGifqQY4",
+      "updated_at": "2023-07-30T10:05:42Z",
+      "username": "hermione_dadheech",
+      "name": "Hermione Dadheech",
+      "first_name": "Hermione",
+      "last_name": "Dadheech",
+      "twitter_username": null,
+      "portfolio_url": "https://www.youtube.com/@wolfgang_hasselmann/videos",
+      "bio": "I am a photographer and enjoy my hobby.\r\nI like to share my pictures for free, but if you feel you would like to donate, do it not to me but to:  Médecins Sans Frontières   https://www.msf.org/donate  \r\n",
+      "location": "Germany ",
+      "links": {
+          "self": "https://api.unsplash.com/users/wolfgang_hasselmann",
+          "html": "https://unsplash.com/@wolfgang_hasselmann",
+          "photos": "https://api.unsplash.com/users/wolfgang_hasselmann/photos",
+          "likes": "https://api.unsplash.com/users/wolfgang_hasselmann/likes",
+          "portfolio": "https://api.unsplash.com/users/wolfgang_hasselmann/portfolio",
+          "following": "https://api.unsplash.com/users/wolfgang_hasselmann/following",
+          "followers": "https://api.unsplash.com/users/wolfgang_hasselmann/followers"
+      },
+      "profile_image": {
+          "small": "https://images.unsplash.com/profile-1516997253075-2a25da8007e7?ixlib=rb-4.0.3&crop=faces&fit=crop&w=32&h=32",
+          "medium": "https://images.unsplash.com/profile-1516997253075-2a25da8007e7?ixlib=rb-4.0.3&crop=faces&fit=crop&w=64&h=64",
+          "large": "https://images.unsplash.com/profile-1516997253075-2a25da8007e7?ixlib=rb-4.0.3&crop=faces&fit=crop&w=128&h=128"
+      },
+      "instagram_username": null,
+      "total_collections": 75,
+      "total_likes": 12577,
+      "total_photos": 15437,
+      "accepted_tos": true,
+      "for_hire": false,
+      "social": {
+          "instagram_username": null,
+          "portfolio_url": "https://www.youtube.com/@wolfgang_hasselmann/videos",
+          "twitter_username": null,
+          "paypal_email": null
+      }
+  }
   },
   photos:{loadedAt:"",
   data:[]}

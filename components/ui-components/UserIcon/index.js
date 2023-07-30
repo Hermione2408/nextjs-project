@@ -6,7 +6,7 @@ const ProfileSection = ({ image,username,ShowName }) =>{
     return(
     <div className={styles.header}>
          <Image 
-            className={styles.icon}
+            className={styles.profilePic}
             src={image ? image :userImage}
             width={24}
             height={24}

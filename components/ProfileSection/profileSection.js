@@ -11,7 +11,7 @@ const posts = [
   // ...
 ];
 
-const ProfileSection = () => {
+const ProfileSection = ({userData}) => {
   const [view, setView] = useState('grid'); // grid or list
 
   const switchView = () => {
@@ -21,9 +21,9 @@ const ProfileSection = () => {
   return (
     <div>
       {/* Profile Information */}
-      <ProfileHeaderMob />
-      <ProfileMain />
-      <ProfileStats />
+      <ProfileHeaderMob data={userData} />
+      <ProfileMain data={userData} />
+      <ProfileStats data={userData} />
       <button onClick={switchView}>Switch View</button>
 
       {/* Post Section */}
