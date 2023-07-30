@@ -5,13 +5,14 @@ import ProfileSection from '../UserIcon/index.js';
 import ImageSection from '../Image/image';
 import IconSection from '../Icons/icon';
 import {useState} from 'react';
+import Link from 'next/link';
 // import axios from "axios";
 
 const Card = ({ post }) => {
 
   console.log(post.liked_by_user, "POST")
   let user_profileimg = post.user.profile_image.small
-  let user_username = post.user.instagram_username
+  let user_username = post.user.username
   // let postLiked = post.liked_by_user
   const [postLiked, setPostLiked] = useState(post.liked_by_user);  
   const handleLike = async () => {
@@ -28,10 +29,12 @@ const Card = ({ post }) => {
     
   }
   return (
-    <div className={styles.card}>
+    <div className={styles.card}>      
+      <Link href={`/profile/${user_username}`}>
       <div className={styles.profileHeader}>  
       <ProfileSection image={user_profileimg} username={user_username} ShowName={true} />
       </div>
+      </Link>
       <ImageSection url={post.urls.small_s3} />
       <div className={styles.content}>
         <IconSection postLiked={postLiked} onLike={handleLike}/>

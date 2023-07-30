@@ -2,9 +2,9 @@ import styles from './profileStats.module.css'
 const ProfileStats = ({data})=>{
     console.log('stats',data)
     const mapper =[
-        {key:'total_collections',name:"Collections"},
-        {key:"total_likes",name:"Likes"},
-        {key:"total_photos",name:"Photos"}
+        {key:'total_photos',name:"posts"},
+        {key:"followers_count",name:"followers"},
+        {key:"following_count",name:"following"}
     ]
     return(
         <div className={styles.container}>

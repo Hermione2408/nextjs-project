@@ -15,15 +15,13 @@ import ProfileFeed from "../ProfileFeed/index"
 const ProfileSection = ({userData}) => {
   const [view, setView] = useState('grid'); // grid or list
   const [selectedTab,setSelectedTab] = useState('list')
-  const switchView = () => {
-    setView(view === 'grid' ? 'list' : 'grid');
-  };
+
   const switchFunction = (tab)=>{
     setSelectedTab(tab)
   }
   console.log(selectedTab,"SELECTED T")
   return (
-    <div>
+    <div className={styles.container}>
       {/* Profile Information */}
       <ProfileHeaderMob data={userData} />
       <ProfileMain data={userData} />
@@ -31,7 +29,7 @@ const ProfileSection = ({userData}) => {
       <ViewSwitcher selectedTab={selectedTab} switchViewFunction={switchFunction} />
 
       {
-        selectedTab == 'grid'? <PhotosGridView /> : (selectedTab == 'list' ? <ProfileFeed /> : (selectedTab == 'tagged' ? <TaggedPhotos /> : <BookmarkPhotos />))
+        selectedTab == 'grid'? <PhotosGridView data={userData.photos} /> : (selectedTab == 'list' ? <ProfileFeed data={userData.photos} /> : (selectedTab == 'tagged' ? <TaggedPhotos /> : <BookmarkPhotos />))
       }
       
     </div>

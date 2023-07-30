@@ -5,16 +5,12 @@ import HomeFeed from '../components/HomeFeed/homeFeed';
 import NavBarMobile from '../components/NavBarMobile/navBarMobile';
 import { fetchPhotos } from '../store/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSelfDetails } from '../store/userSlice';
 import { useEffect } from 'react';
 
 export default function Home({isMobileView}) {
   console.log(isMobileView)
   const dispatch = useDispatch();
   const { photos } = useSelector((state) => state.user);
-  const fetchUserDetails = ()=>{
-      dispatch(fetchSelfDetails())
-  }
   const fetchMorePhotos = () => {
     console.log('1111')
     return new Promise((resolve, reject) => {
@@ -29,9 +25,7 @@ export default function Home({isMobileView}) {
         });
     });
   }
-  useEffect(()=>{
-    fetchUserDetails()
-  },[])
+  
   const { data: posts } = photos;
   console.log(photos,"222")
 

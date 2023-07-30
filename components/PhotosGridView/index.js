@@ -1,14 +1,23 @@
 import styles from "./photosGridView.module.css"
+import Image from "next/image"
 
-const PhotosGridView = ({post})=>{
-    return(
+const PhotosGridView = ({data}) => {
+    console.log(data, "Grid");
+
+    return (
         <div className={styles.grid}>
-            <div className={styles.postGrid}>
-        grid VIEW
-    {/* <img src={post.image} alt={post.caption} /> */}
-  </div>
+            {data.map((photo) => (
+                <div key={photo.id} className={styles.postGrid}>
+                    <div className={styles.image}>
+                        <img
+                            src={photo.urls.small} 
+                            alt={photo.alt_description}
+                        />
+                    </div>
+                </div>
+            ))}
         </div>
-        
     )
 }
+
 export default PhotosGridView

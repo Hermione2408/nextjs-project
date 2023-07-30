@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router'
-import styles from '../../styles/Home.module.css';
 import NavBarDesktop from '../../components/NavBarDesktop/navBarDesktop';
 import SideBarDesktop from '../../components/SideBarDesktop/sideBarDesktop';
 import NavBarMobile from '../../components/NavBarMobile/navBarMobile';
 import ProfileSection from '../../components/ProfileSection/profileSection';
 import ProfileStats from '../../components/ProfileStats';
+import styles from "./profile.module.css"
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 export default function Page({isMobileView}) {
@@ -13,9 +14,8 @@ export default function Page({isMobileView}) {
   let id = router.query.id
   const [userDetails,setUserDetails]=useState({})
 
-  const fetchDetails = async(id)=>{
-    const response = await axios.get(`https://api.unsplash.com/users/me`, {
-    params: { count: 10 },
+  const fetchDetails = async(username)=>{
+    const response = await axios.get(`https://api.unsplash.com/users/${username}`, {
     headers: {
       Authorization: `Client-ID ${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
     }
@@ -27,16 +27,20 @@ export default function Page({isMobileView}) {
   setUserDetails(response.data)
   return ;
   }
-
+  console.log(userDetails,'data')
   useEffect(()=>{
+    const { id } = router.query;
+
     fetchDetails(id)
-  },[])
+  },[router.query])
   return (
     <div className={styles.container}>
     { !isMobileView && <NavBarDesktop />}
     <div className={styles.home}>
-     <ProfileSection/>
-     {/* <NavBarMobile/> */}
+     {Object.keys(userDetails).length>0 && <ProfileSection userData={userDetails} photosData={userDetails.photos} />}
+    </div>
+    <div style={{position:"fixed"}}>
+      {isMobileView && <NavBarMobile/>}
     </div>
     {!isMobileView && <SideBarDesktop/>}
    </div>

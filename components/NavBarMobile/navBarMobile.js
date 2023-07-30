@@ -1,5 +1,5 @@
 import styles from './navBarMobile.module.css';
-import ProfileSection from '../ui-components/UserIcon/index';
+import UserIcon from '../ui-components/UserIcon/index';
 import Image from 'next/image'
 import Home from '../../assets/img/svg/home.png';
 import Search from '../../assets/img/svg/search.png';
@@ -14,12 +14,14 @@ const NavBarMobile = () => {
     const { userState } = useSelector((state) => state.user);
     return (
         <div className={styles.container}>
-                <Image className={styles.icon}
-                    src={Home}
-                    width={24}
-                    height={24}
-                    alt="Home"
-                />
+                <Link href={`/`}>
+                    <Image className={styles.icon}
+                        src={Home}
+                        width={24}
+                        height={24}
+                        alt="Home"
+                    />
+                </Link>
                 <Image className={styles.icon}
                     src={Search}
                     width={24}
@@ -39,7 +41,7 @@ const NavBarMobile = () => {
                     alt="Reels"
                 />
                 <div className={styles.profileImageContainer}>
-                <Link href={`/profile/me`}><ProfileSection post={{ username: 'test' }} ShowName={false} /></Link>
+                <Link href={`/profile/me`}><UserIcon post={{ username: 'test' }} ShowName={false} /></Link>
                 </div>
 
         </div>
