@@ -1,7 +1,7 @@
 import styles from "./photosGridView.module.css"
 import Image from "next/image"
 
-const PhotosGridView = ({data}) => {
+const PhotosGridView = ({data,user}) => {
     console.log(data, "Grid");
 
     return (

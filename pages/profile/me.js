@@ -1,5 +1,4 @@
 import NavbarDesktop from '../../components/Sidebar/index';
-import SideBarDesktop from '../../components/SideBarDesktop/sideBarDesktop';
 import NavBarMobile from '../../components/NavBarMobile/navBarMobile';
 import ProfileSection from '../../components/ProfileSection/profileSection';
 import { useSelector } from 'react-redux';
@@ -22,15 +21,15 @@ export default function Page({isMobileView}) {
   const {data} = userState
   return (
     <div className={styles.container}>
-    { !isMobileView && <NavBarDesktop />}
+    { !isMobileView && <NavbarDesktop />}
     <div className={styles.home}>
-     <ProfileSection userData = {data} photosData={photosData} />
+     <ProfileSection selfUser userData = {data} photosData={photosData} />
      {/* <NavBarMobile/> */}
     </div>
     <div style={{position:"fixed"}}>
       {isMobileView && <NavBarMobile/>}
     </div>
-    {!isMobileView && <SideBarDesktop />}
+    {/* {!isMobileView && <SideBarDesktop />} */}
    </div>
   )
 }

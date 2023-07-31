@@ -5,7 +5,7 @@ import CardDesktop from '../ui-components/CardDesktop/index';
 import Loading from '../Loading/loading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import EmptyState from '../ui-components/EmptyState';
-const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true,showListView}) => {
+const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true,showListView,user}) => {
     console.log(isMobileView,"MOB")
     const [columnData,setColumnData] = useState([])
     const [openModalId, setOpenModalId] = useState(null);
@@ -29,7 +29,7 @@ const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true,showListVi
   
   const columns = distributeElements(data, totalColumns);
   setColumnData(columns)
-  },[window.innerWidth,data])
+  },[data])
   if (data.length === 0) {
     return <EmptyState message="No photos available." />
   }else{
@@ -46,7 +46,7 @@ const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true,showListVi
       scrollableTarget="scrollableDiv"
     >
       {data.map((post) => {
-        return <Card key={post.id} post={post} id={post.id} />;
+        return <Card user={user} key={post.id} post={post} id={post.id} />;
       })}
     </InfiniteScroll>  
     </div>):(

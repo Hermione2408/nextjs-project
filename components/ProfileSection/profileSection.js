@@ -12,7 +12,7 @@ import ProfileFeed from "../ProfileFeed/index"
 
 
 
-const ProfileSection = ({userData}) => {
+const ProfileSection = ({userData,isMobileView,selfUser}) => {
   const [view, setView] = useState('grid'); // grid or list
   const [selectedTab,setSelectedTab] = useState('list')
   const [isFollowed,setIsFollowed] = useState(false)
@@ -27,15 +27,15 @@ const ProfileSection = ({userData}) => {
   return (
     <div className={styles.container}>
       {/* Profile Information */}
-      <ProfileHeaderMob data={userData} />
-      <ProfileMain data={userData} followed_by_user={isFollowed} switchFollowed={(val)=>setIsFollowed(val)} />
+      {isMobileView && <ProfileHeaderMob data={userData} />}
+      <ProfileMain selfUser={selfUser} data={userData} followed_by_user={isFollowed} switchFollowed={(val)=>setIsFollowed(val)} />
       
-      {isFollowed ?(
+      {isFollowed || selfUser ?(
       <><ProfileStats data={userData} />
       <ViewSwitcher selectedTab={selectedTab} switchViewFunction={switchFunction} />
 
       {
-        selectedTab == 'grid'? <PhotosGridView data={userData.photos} /> : (selectedTab == 'list' ? <ProfileFeed data={userData.photos} /> : (selectedTab == 'tagged' ? <TaggedPhotos /> : <BookmarkPhotos />))
+        selectedTab == 'grid'? <PhotosGridView user={userData} data={userData.photos} /> : (selectedTab == 'list' ? <ProfileFeed user={userData} data={userData.photos} /> : (selectedTab == 'tagged' ? <TaggedPhotos /> : <BookmarkPhotos />))
       }
       </>):(
       <div style={{textAlign:'center'}}>

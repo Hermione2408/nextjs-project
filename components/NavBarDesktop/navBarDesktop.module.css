@@ -24,6 +24,7 @@
 .searchInput {
     outline: none;
     border: none;
+    width: 100%;
 }
 
 .searchIcon {

@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import SideBarDesktop from '../../components/ProfileSidebar';
 import NavbarDesktop from '../../components/Sidebar/index';
 import NavBarMobile from '../../components/NavBarMobile/navBarMobile';
 import ProfileSection from '../../components/ProfileSection/profileSection';

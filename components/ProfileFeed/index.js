@@ -1,10 +1,10 @@
 import styles from "./profileFeed.module.css"
 import HomeFeed from "../HomeFeed/homeFeed"
-const ProfileFeed = ({data})=>{
+const ProfileFeed = ({data,user})=>{
     return(
         <div className={styles.container}>
             {data && data.length>0?
-                <HomeFeed data={data} showListView loadMore={false} />
+                <HomeFeed user={user} data={data} showListView loadMore={false} />
                 :(
                     <div>
                         No photos to show
