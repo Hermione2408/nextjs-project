@@ -38,7 +38,7 @@ const Card = ({ post,id,user }) => {
             <ProfileSection image={user_profileimg} username={user_username || router.query.id || 'hermione'} ShowName={true} />
           </div>
         </Link>
-        <ImageSection url={post.urls.small_s3} />
+        <ImageSection url={post.urls.small_s3} hashUrl={post.blur_hash} height={post.height} width={post.width} />
         <div className={styles.content}>
           <IconSection postLiked={postLiked} onLike={handleLike}/>
           {post.likes && <div><strong>{post.likes}</strong> likes </div>}
