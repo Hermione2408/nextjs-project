@@ -12,12 +12,15 @@ const NavBarDesktop = () => {
             <div className={styles.logoContainer}>
                 <Image className={styles.icon} src={Logo} width={103} height={32} alt="Logo" />
             </div>
+            <div className={styles.searchContainer}>
             <div className={styles.searchBox}>
                 <input type="text" placeholder="Search" className={styles.searchInput}/>
                 <div className={styles.searchIcon}>
-                    <Image className={styles.icon} src={Search} width={24} height={24} alt="Search" />
+                    <Image className={styles.icon} src={Search} width={16} height={16} alt="Search" />
                 </div>
             </div>
+            </div>
+            <div className={styles.icons}>
             <div className={styles.iconContainer}>
                 <div className={styles.subcontainer}>
                     <Image className={styles.icon} src={Home} width={24} height={24} alt="Home" />
@@ -31,6 +34,7 @@ const NavBarDesktop = () => {
                     <Image className={styles.icon} src={Reels} width={24} height={24} alt="Reels" />
                     <span>Reels</span>
                 </div>
+            </div>
             </div>
         </div>
     );

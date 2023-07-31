@@ -39,7 +39,7 @@ const CardDesktop = ({ post, id, onClick, onCloseModal, isOpen }) => {
   }
   
     return (
-      <div className={styles.card} onClick={handleCardClick}>      
+      <div className={styles.card}>      
       <Link href={`/profile/${user_username}`}>
         <div className={styles.profileHeader}>  
           <ProfileSection image={user_profileimg} username={user_username} ShowName={true} />

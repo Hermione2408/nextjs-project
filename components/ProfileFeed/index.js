@@ -3,7 +3,7 @@ import HomeFeed from "../HomeFeed/homeFeed"
 const ProfileFeed = ({data})=>{
     return(
         <div className={styles.container}>
-            {false?
+            {data && data.length>0?
                 <HomeFeed data={data} showListView loadMore={false} />
                 :(
                     <div>

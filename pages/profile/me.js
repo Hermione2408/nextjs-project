@@ -30,7 +30,7 @@ export default function Page({isMobileView}) {
     <div style={{position:"fixed"}}>
       {isMobileView && <NavBarMobile/>}
     </div>
-    {!isMobileView && <SideBarDesktop/>}
+    {!isMobileView && <SideBarDesktop />}
    </div>
   )
 }

@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css';
 import NavBarDesktop from '../components/NavBarDesktop/navBarDesktop';
-import SideBarDesktop from '../components/SideBarDesktop/sideBarDesktop';
+import SideBarDesktop from '../components/ProfileSidebar';
 import HomeFeed from '../components/HomeFeed/homeFeed';
 import NavBarMobile from '../components/NavBarMobile/navBarMobile';
 import { fetchPhotos } from '../store/userSlice';

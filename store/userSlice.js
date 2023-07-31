@@ -1,12 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import selfData from "../utils/dummyuserdata.json"
+import suggestedUsersData from "../utils/dummySuggestedUser.json"
 import axios from "axios";
 import moment from "moment"
 const initialState = {
   userState: {
     loadedAt:'',
     data:selfData
+  },
+  suggestedUsers:{
+    data:suggestedUsersData,
+    loadedAt:''
   },
   photos:{loadedAt:"",
   data:[]}

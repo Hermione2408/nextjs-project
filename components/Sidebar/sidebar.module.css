@@ -1,14 +1,13 @@
 .container{
     height: 100%;
-    flex: 2;
     padding: 56px 12px 20px 16px;
     border-right: 1px solid rgb(219, 219, 219);
 
 }
 .subcontainer{
     height: 64px;
-    width: 220px;
     display: flex;
+    width: 80px;
     align-items: center;
     padding: 12px;
     box-sizing: border-box;
@@ -27,5 +26,8 @@
 @media screen and (min-width:1200px) {
     .iconName{
         display: block;
+    }
+    .subcontainer{
+        width: 220px;
     }
 }

@@ -3,21 +3,27 @@
     justify-content: space-between;
     align-items: center;
     height:75px;
+    padding: 24px 56px;
 }
-
+.logoContainer{
+    flex: 1;
+}
+.searchContainer{
+    flex:3 ;
+}
 .searchBox {
     position: relative;
-    flex: 1;
-    margin: 0 24px;
-}
-
-.searchInput {
+    margin-left: 32px;
     width: 100%;
     height: 32px;
     border-radius: 16px;
     border: 1px solid #dbdbdb;
-    padding: 0 40px 0 16px;
+    padding:4px 8px;
+}
+
+.searchInput {
     outline: none;
+    border: none;
 }
 
 .searchIcon {
@@ -26,11 +32,17 @@
     top: 50%;
     transform: translateY(-50%);
 }
-
-.iconContainer {
+.icons{
+    flex: 6;
     display: flex;
-    justify-content: space-between;
-    width: 220px;
+    justify-content: flex-end;
+}
+.iconContainer {
+    width: 75%;
+    display: flex;
+    gap:24px;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .subcontainer {
