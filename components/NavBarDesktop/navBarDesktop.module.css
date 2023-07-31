@@ -2,15 +2,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height:75px;
+    height: 75px;
     padding: 24px 56px;
+    border-bottom: 1px solid rgb(219, 219, 219);
 }
-.logoContainer{
+
+.logoContainer {
     flex: 1;
 }
-.searchContainer{
-    flex:7 ;
+
+.searchContainer {
+    flex: 7;
 }
+
 .searchBox {
     position: relative;
     margin-left: 32px;
@@ -18,7 +22,7 @@
     height: 32px;
     border-radius: 16px;
     border: 1px solid #dbdbdb;
-    padding:4px 8px;
+    padding: 4px 8px;
 }
 
 .searchInput {
@@ -33,27 +37,31 @@
     top: 50%;
     transform: translateY(-50%);
 }
-.icons{
+
+.icons {
     flex: 6;
     display: flex;
     justify-content: flex-end;
 }
-.iconsLeft{
+
+.iconsLeft {
     flex: 1;
     display: flex;
     justify-content: flex-end;
 }
+
 .iconContainer {
     width: 45%;
     display: flex;
-    gap:24px;
+    gap: 24px;
     justify-content: flex-end;
     align-items: center;
 }
+
 .iconLeftContainer {
     width: 75%;
     display: flex;
-    gap:24px;
+    gap: 24px;
     justify-content: flex-start;
     align-items: center;
     margin-right: 10%;
@@ -68,6 +76,9 @@
 .subcontainer span {
     margin-left: 10px;
 }
+
 @media screen and (max-width:1500px) {
-    .subcontainer span{display:none}
+    .subcontainer span {
+        display: none
+    }
 }

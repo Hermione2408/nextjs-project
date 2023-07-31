@@ -10,11 +10,11 @@ import Loading from '../components/Loading/loading';
 import _ from 'lodash';
 import EmptyState from '../components/ui-components/EmptyState';
 
-export default function Home({isMobileView}) {
+export default function Home({ isMobileView }) {
   console.log(isMobileView)
   const dispatch = useDispatch();
   const { photos } = useSelector((state) => state.user);
-  const [loading,setLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
   const fetchMorePhotos = _.throttle(() => {
     console.log('1111')
     return new Promise((resolve, reject) => {
@@ -29,35 +29,35 @@ export default function Home({isMobileView}) {
           throw new Error("Try again later")
           reject(error);
         })
-        .finally(()=>{
+        .finally(() => {
           setLoading(false)
         })
     });
   }, 15000);
-  useEffect(()=>{
+  useEffect(() => {
     fetchMorePhotos()
-  },[])
+  }, [])
   const { data: posts } = photos;
-  console.log(photos,"222")
+  console.log(photos, "222")
 
   return (
     <>
-    {loading ? <Loading /> :<div className={styles.container}>
-     { !isMobileView && <NavBarDesktop className={styles.navbarDesktop} />}
-     <div className={styles.home}>
-      <div className={styles.homeFeed}>
-      {(posts&&posts.length>0) ?(<HomeFeed isMobileView={isMobileView} data={posts} fetchingFunction={fetchMorePhotos} />)
-      :(
-        <EmptyState message={"No photos to show , probably because of unspash rate limit"} />
-      )
-      }
-      
-      </div>
-      <div>
-      {isMobileView && <NavBarMobile/>}
-      </div>
-     </div>
-    </div>}
+      {loading ? <Loading /> : <div className={styles.container}>
+        {!isMobileView && <NavBarDesktop className={styles.navbarDesktop} />}
+        <div className={styles.home}>
+          <div className={styles.homeFeed}>
+            {(posts && posts.length > 0) ? (<HomeFeed isMobileView={isMobileView} data={posts} fetchingFunction={fetchMorePhotos} />)
+              : (
+                <EmptyState message={"No photos to show , probably because of unspash rate limit"} />
+              )
+            }
+
+          </div>
+          <div>
+            {isMobileView && <NavBarMobile />}
+          </div>
+        </div>
+      </div>}
     </>
   )
 }

@@ -1,7 +1,7 @@
 import styles from "./photosGridView.module.css"
 import Image from "next/image"
 
-const PhotosGridView = ({data,user}) => {
+const PhotosGridView = ({ data, user }) => {
     console.log(data, "Grid");
 
     return (
@@ -10,7 +10,7 @@ const PhotosGridView = ({data,user}) => {
                 <div key={photo.id} className={styles.postGrid}>
                     <div className={styles.image}>
                         <img
-                            src={photo.urls.small} 
+                            src={photo.urls.small}
                             alt={photo.alt_description}
                         />
                     </div>

@@ -5,32 +5,32 @@ import { useSelector } from 'react-redux';
 import styles from "./profile.module.css"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-export default function Page({isMobileView}) {
+export default function Page({ isMobileView }) {
   console.log("profile")
   const { userState } = useSelector((state) => state.user);
-  const [photosData,setPhotosData] = useState([])
- 
-//   useEffect(()=>{
-//     const response = fetchPhotos().then((res)=>{
-//         console.log(res,"RES")
+  const [photosData, setPhotosData] = useState([])
 
-//         setPhotosData(res)
-//     })
-//   },[])
+  //   useEffect(()=>{
+  //     const response = fetchPhotos().then((res)=>{
+  //         console.log(res,"RES")
+
+  //         setPhotosData(res)
+  //     })
+  //   },[])
   console.log(userState)
-  const {data} = userState
+  const { data } = userState
   return (
     <div className={styles.container}>
-    { !isMobileView && <NavbarDesktop />}
-    <div className={styles.home}>
-     <ProfileSection selfUser userData = {data} photosData={photosData} />
-     {/* <NavBarMobile/> */}
+      {!isMobileView && <NavbarDesktop />}
+      <div className={styles.home}>
+        <ProfileSection selfUser userData={data} photosData={photosData} />
+        {/* <NavBarMobile/> */}
+      </div>
+      <div style={{ position: "fixed" }}>
+        {isMobileView && <NavBarMobile />}
+      </div>
+      {/* {!isMobileView && <SideBarDesktop />} */}
     </div>
-    <div style={{position:"fixed"}}>
-      {isMobileView && <NavBarMobile/>}
-    </div>
-    {/* {!isMobileView && <SideBarDesktop />} */}
-   </div>
   )
 }
 

@@ -14,38 +14,38 @@ const NavBarMobile = () => {
     const { userState } = useSelector((state) => state.user);
     return (
         <div className={styles.container}>
-                <Link href={`/`}>
-                    <Image className={styles.icon}
-                        src={Home}
-                        width={24}
-                        height={24}
-                        alt="Home"
-                    />
-                </Link>
-                <Tooltip content={"To be implemented"}>
+            <Link href={`/`}>
+                <Image className={styles.icon}
+                    src={Home}
+                    width={24}
+                    height={24}
+                    alt="Home"
+                />
+            </Link>
+            <Tooltip content={"To be implemented"}>
                 <Image className={styles.icon}
                     src={Search}
                     width={24}
                     height={24}
                     alt="Search"
                 />
-            </Tooltip> 
-                
-                <Image className={styles.icon}
-                    src={Create}
-                    width={24}
-                    height={24}
-                    alt="Create"
-                />
-                <Image className={styles.icon}
-                    src={Reels}
-                    width={24}
-                    height={24}
-                    alt="Reels"
-                />
-                <div className={styles.profileImageContainer}>
+            </Tooltip>
+
+            <Image className={styles.icon}
+                src={Create}
+                width={24}
+                height={24}
+                alt="Create"
+            />
+            <Image className={styles.icon}
+                src={Reels}
+                width={24}
+                height={24}
+                alt="Reels"
+            />
+            <div className={styles.profileImageContainer}>
                 <Link href={`/profile/me`}><UserIcon post={{ username: 'test' }} ShowName={false} /></Link>
-                </div>
+            </div>
 
         </div>
     );

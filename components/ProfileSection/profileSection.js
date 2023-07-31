@@ -12,37 +12,37 @@ import ProfileFeed from "../ProfileFeed/index"
 
 
 
-const ProfileSection = ({userData,isMobileView,selfUser}) => {
+const ProfileSection = ({ userData, isMobileView, selfUser }) => {
   const [view, setView] = useState('grid'); // grid or list
-  const [selectedTab,setSelectedTab] = useState('grid')
-  const [isFollowed,setIsFollowed] = useState(false)
-  const switchFunction = (tab)=>{
+  const [selectedTab, setSelectedTab] = useState('grid')
+  const [isFollowed, setIsFollowed] = useState(false)
+  const switchFunction = (tab) => {
     setSelectedTab(tab)
   }
-  const {username,name,bio,followed_by_user} = userData
-  useEffect(()=>{
+  const { username, name, bio, followed_by_user } = userData
+  useEffect(() => {
     setIsFollowed(followed_by_user)
-  },[])
-  console.log(selectedTab,userData,"SELECTED T")
+  }, [])
+  console.log(selectedTab, userData, "SELECTED T")
   return (
     <div className={styles.container}>
       {/* Profile Information */}
       {isMobileView && <ProfileHeaderMob data={userData} />}
-      <ProfileMain selfUser={selfUser} data={userData} followed_by_user={isFollowed} switchFollowed={(val)=>setIsFollowed(val)} />
-      
-      {isFollowed || selfUser ?(
-      <><ProfileStats data={userData} />
-      <ViewSwitcher selectedTab={selectedTab} switchViewFunction={switchFunction} />
+      <ProfileMain selfUser={selfUser} data={userData} followed_by_user={isFollowed} switchFollowed={(val) => setIsFollowed(val)} />
 
-      {
-        selectedTab == 'grid'? <PhotosGridView user={userData} data={userData.photos} /> : (selectedTab == 'list' ? <ProfileFeed user={userData} data={userData.photos} /> : (selectedTab == 'tagged' ? <TaggedPhotos /> : <BookmarkPhotos />))
+      {isFollowed || selfUser ? (
+        <><ProfileStats data={userData} />
+          <ViewSwitcher selectedTab={selectedTab} switchViewFunction={switchFunction} />
+
+          {
+            selectedTab == 'grid' ? <PhotosGridView user={userData} data={userData.photos} /> : (selectedTab == 'list' ? <ProfileFeed user={userData} data={userData.photos} /> : (selectedTab == 'tagged' ? <TaggedPhotos /> : <BookmarkPhotos />))
+          }
+        </>) : (
+        <div style={{ textAlign: 'center' }}>
+          <h3>This account is private, follow to see the photos !! </h3>
+        </div>)
       }
-      </>):(
-      <div style={{textAlign:'center'}}>
-      <h3>This account is private, follow to see the photos !! </h3>  
-      </div>)
-      }
-      
+
     </div>
   );
 };

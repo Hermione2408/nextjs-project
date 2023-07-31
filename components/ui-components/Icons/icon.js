@@ -8,43 +8,43 @@ import Bookmark from '../../../assets/img/svg/bookmark.svg';
 import Share from '../../../assets/img/svg/send.png';
 
 // import LikeIcon from '../../../assets/img/svg/like.svg'
-const IconSection = ({postLiked, onLike}) => (
+const IconSection = ({ postLiked, onLike }) => (
   <div className={styles.icons}>
     <div>
       {/* <img src={LikeIcon} alt='Like Icon' />   */}
-       {postLiked?
-         (<Image className={styles.icon}
-         src={Liked}
-         width={24}
-         height={24}
-         alt="Likes filled"
-         onClick={onLike} 
+      {postLiked ?
+        (<Image className={styles.icon}
+          src={Liked}
+          width={24}
+          height={24}
+          alt="Likes filled"
+          onClick={onLike}
 
-       />):
-       
-    (  <Image className={styles.icon}
-        src={Like}
-        width={24}
-        height={24}
-        alt="Likes"
-        onClick={onLike} 
-      />)
-       }
+        />) :
+
+        (<Image className={styles.icon}
+          src={Like}
+          width={24}
+          height={24}
+          alt="Likes"
+          onClick={onLike}
+        />)
+      }
       <Image className={styles.icon}
         src={Comment}
         width={24}
         height={24}
         alt="Comment"
-      />  
+      />
       <Image className={styles.icon}
         src={Share}
         width={24}
         height={24}
         alt="Share"
-      /> 
-        </div>
+      />
+    </div>
     <div>
-    <Image
+      <Image
         src={Bookmark}
         width={24}
         height={24}

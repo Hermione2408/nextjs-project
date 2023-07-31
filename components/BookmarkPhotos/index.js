@@ -1,8 +1,8 @@
 
 import styles from "./bookmarkPhotos.module.css"
 
-const BookmarkPhotos = ()=>{
-    return(
+const BookmarkPhotos = () => {
+    return (
         <div>
             Bookmark (to be implemented)
         </div>

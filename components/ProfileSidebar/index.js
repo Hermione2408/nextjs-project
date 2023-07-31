@@ -9,16 +9,16 @@ const ProfileSidebar = () => {
     const { userState } = useSelector((state) => state.user);
     const { suggestedUsers } = useSelector((state) => state.user);
 
-    const{data} = userState
-    console.log(data,'sidebar')
-    const {data:suggestedUserData} = suggestedUsers
-    let user_profileimg = data&& data.profile_image && data.profile_image.small || userImage
+    const { data } = userState
+    console.log(data, 'sidebar')
+    const { data: suggestedUserData } = suggestedUsers
+    let user_profileimg = data && data.profile_image && data.profile_image.small || userImage
     let user_username = data && data.username || "instagram user"
     return (
         <div className={styles.sidebar}>
             <Link href={`/profile/${data.username}`}>
                 <div>
-                <UserIcon image={user_profileimg} username={user_username || router.query.id} ShowName={true} />
+                    <UserIcon image={user_profileimg} username={user_username || router.query.id} ShowName={true} />
 
                     <img className={styles.profileImage} src={data.profileImageUrl} alt="user profile" />
                     <p>{data.username}</p>
