@@ -10,6 +10,7 @@ import UserIcon from '../ui-components/UserIcon/index';
 import Like from '../../assets/img/svg/like.png'
 import Explore from '../../assets/img/svg/explore.png'
 import Message from '../../assets/img/svg/message.png'
+import Tooltip from '../Tooltip';
 
 const NavBarDesktop = () => {
     return (
@@ -50,19 +51,25 @@ const NavBarDesktop = () => {
             </div>
             <div className={styles.iconsLeft}>
             <div className={styles.iconContainer}>
+            <Tooltip content={"Notification"} place="bottom" offset={{ bottom: 10, right: 10 }}>
             <div className={styles.subcontainer}>
                     <Image className={styles.icon} src={Like} width={24} height={24} alt="Notification" />
                     {/* <span>Notifications</span> */}
                 </div>
+            </Tooltip>
+            <Tooltip content={"Message"}>
                 <div className={styles.subcontainer}>
                     <Image className={styles.icon} src={Message} width={27} height={27} alt="Message" />
                 </div>
+                </Tooltip>
+                <Tooltip content={"Profile"}>
                 <div className={styles.subcontainer}>
                     <div className={styles.profileImageContainer}>
                 <Link href={`/profile/me`}><UserIcon post={{ username: 'test' }} ShowName={false} /></Link>
                 </div>
                 </div>
-         
+                </Tooltip>
+
               
             </div>
             </div>

@@ -14,7 +14,7 @@ import ProfileFeed from "../ProfileFeed/index"
 
 const ProfileSection = ({userData,isMobileView,selfUser}) => {
   const [view, setView] = useState('grid'); // grid or list
-  const [selectedTab,setSelectedTab] = useState('list')
+  const [selectedTab,setSelectedTab] = useState('grid')
   const [isFollowed,setIsFollowed] = useState(false)
   const switchFunction = (tab)=>{
     setSelectedTab(tab)

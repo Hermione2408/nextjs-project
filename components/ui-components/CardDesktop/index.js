@@ -15,6 +15,8 @@ const CardDesktop = ({ post, id, onClick, onCloseModal, isOpen }) => {
   let user_username = post && post.user && post.user.username || ""
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [postLiked, setPostLiked] = useState(post.liked_by_user);  
+  const [noLiked, setNoLiked] =useState(post.likes);
+
   const handleCardClick = (event) => {
     event.stopPropagation();
     onClick(id);
@@ -25,6 +27,11 @@ const CardDesktop = ({ post, id, onClick, onCloseModal, isOpen }) => {
     onCloseModal();
   };
   const handleLike = async () => {
+    if(postLiked==false){
+      setNoLiked(noLiked+1)
+    }else{
+      setNoLiked(noLiked-1)
+    }   
     setPostLiked(!postLiked);
 
     const response = await fetch(`https://api.unsplash.com/photos/${post.id}/like`, {
@@ -47,7 +54,7 @@ const CardDesktop = ({ post, id, onClick, onCloseModal, isOpen }) => {
       <ImageSection url={post.urls.small_s3} hashUrl={post.blur_hash} height={post.height} width={post.width} />
       <div className={`${styles.content} ${styles.iconSectionHidden}`}>
         <IconSection postLiked={postLiked} onLike={handleLike}/>
-        {post.likes && <div><strong>{post.likes}</strong> likes </div>}
+        {post.likes && <div><strong>{noLiked}</strong> likes </div>}
         {post.username && post.caption && <div><strong>{post.username}</strong> {post.caption}</div>}
         {post.comments && <div className={styles.comments}>{post.comments}</div>}
       </div>
