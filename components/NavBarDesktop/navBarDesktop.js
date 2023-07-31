@@ -15,7 +15,10 @@ const NavBarDesktop = () => {
     return (
         <div className={styles.container}>
             <div className={styles.logoContainer}>
-                <Image className={styles.icon} src={Logo} width={103} height={40} alt="Logo" />
+                <span style={{width:'103px',height:'40px',fontSize:'21px'}}>
+                    MyGram
+                </span>
+                {/* <Image className={styles.icon} src={Logo} width={103} height={40} alt="Logo" /> */}
             </div>
             <div className={styles.icons}>
             <div className={styles.iconLeftContainer}>

@@ -11,7 +11,9 @@ const NavBarDesktop = () => {
     return (
         <div className={styles.container}>
             <div>
-            <Image className={styles.icon} src={Logo} width={103} height={32} alt="Logo" />
+            <span style={{width:'103px',height:'40px',fontSize:'21px'}}>
+                    MyGram
+                </span>
             </div>
             <div className={styles.icons}>
             <Link href={"/"}>
