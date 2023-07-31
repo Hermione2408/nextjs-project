@@ -39,7 +39,7 @@ const ProfileSection = ({userData,isMobileView,selfUser}) => {
       }
       </>):(
       <div style={{textAlign:'center'}}>
-        this accout is private
+      <h3>This account is private, follow to see the photos !! </h3>  
       </div>)
       }
       
