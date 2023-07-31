@@ -32,7 +32,9 @@ export const fetchPhotos = createAsyncThunk('user/fetchPhotos', async (type, { g
   });
 
   if (response.status !== 200) {
+
     throw new Error('Failed to fetch photos');
+    return response;
   }
   return response.data;
 });

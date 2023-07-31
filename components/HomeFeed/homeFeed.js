@@ -55,6 +55,7 @@ const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true,showListVi
         hasMore={loadMore}
         loader={<Loading />}
         scrollableTarget="scrollableDivDesktop"
+        scrollThreshold={"200px"}
       > 
         <div className={styles.masonry}>
         {columnData.map((col, i) => (

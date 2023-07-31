@@ -7,12 +7,14 @@ import { fetchPhotos } from '../store/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Loading from '../components/Loading/loading';
+import _ from 'lodash';
+
 export default function Home({isMobileView}) {
   console.log(isMobileView)
   const dispatch = useDispatch();
   const { photos } = useSelector((state) => state.user);
   const [loading,setLoading] = useState(true)
-  const fetchMorePhotos = () => {
+  const fetchMorePhotos = _.throttle(() => {
     console.log('1111')
     return new Promise((resolve, reject) => {
       dispatch(fetchPhotos('refetch'))
@@ -21,14 +23,16 @@ export default function Home({isMobileView}) {
           resolve();
         })
         .catch((error) => {
+          console.log(error)
           console.error('Error fetching more photos', error);
+          throw new Error("Try again later")
           reject(error);
         })
         .finally(()=>{
           setLoading(false)
         })
     });
-  }
+  }, 15000);
   useEffect(()=>{
     fetchMorePhotos()
   },[])
