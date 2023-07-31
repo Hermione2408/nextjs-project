@@ -7,6 +7,7 @@ import IconSection from '../Icons/icon';
 import {useState} from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 // import axios from "axios";
 
 const Card = ({ post,id }) => {
@@ -14,6 +15,7 @@ const Card = ({ post,id }) => {
   let user_profileimg = post && post.user && post.user.profile_image &&post.user.profile_image.small || ""
   let user_username = post && post.user && post.user.username || ""
   // let postLiked = post.liked_by_user
+  const router = useRouter()
   const [postLiked, setPostLiked] = useState(post.liked_by_user);  
   const handleLike = async () => {
     setPostLiked(!postLiked);
@@ -33,7 +35,7 @@ const Card = ({ post,id }) => {
       <div className={styles.card}>      
         <Link href={`/profile/${user_username}`}>
           <div className={styles.profileHeader}>  
-            <ProfileSection image={user_profileimg} username={user_username} ShowName={true} />
+            <ProfileSection image={user_profileimg} username={user_username || router.query.id} ShowName={true} />
           </div>
         </Link>
         <ImageSection url={post.urls.small_s3} />

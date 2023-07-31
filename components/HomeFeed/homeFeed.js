@@ -5,9 +5,17 @@ import CardDesktop from '../ui-components/CardDesktop/index';
 import Loading from '../Loading/loading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true}) => {
+const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true,showListView}) => {
     console.log(isMobileView,"MOB")
     const [columnData,setColumnData] = useState([])
+    const [openModalId, setOpenModalId] = useState(null);
+  const handleCardClick = (id) => {
+    setOpenModalId(id);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModalId(null);
+  };
   useEffect(()=>{
     let width = window.innerWidth
     let totalColumns = Math.floor(width/300)
@@ -25,7 +33,7 @@ const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true}) => {
   
   return (
     <>
-    {isMobileView?
+    {(isMobileView || showListView)?
       (
         <div className={styles.container} id='scrollableDiv'>
       <InfiniteScroll
@@ -33,7 +41,6 @@ const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true}) => {
       next={fetchingFunction}
       hasMore={loadMore}
       loader={<Loading />}
-      endMessage={<p>No more data to load.</p>}
       scrollableTarget="scrollableDiv"
     >
       {data.map((post) => {
@@ -54,7 +61,7 @@ const HomeFeed = ({fetchingFunction, data, isMobileView,loadMore=true}) => {
                 <div key={i} className={styles.column}>
                   {col.map((post) => (
                     <div key={post.id} className={styles.masonryCardWrapper}>
-                      <CardDesktop post={post} id={post.id} />
+                <CardDesktop post={post} id={post.id} onClick={handleCardClick} onCloseModal={handleCloseModal} isOpen={openModalId === post.id} />
                     </div>
                   ))}
                 </div>

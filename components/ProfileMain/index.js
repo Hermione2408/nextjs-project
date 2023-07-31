@@ -1,10 +1,21 @@
 import styles from "./profileMain.module.css"
 import Image from "next/image"
+import { useRouter } from "next/router"
 const ProfileMain = ({data})=>{
 
     console.log(data,"profile main")
-    const {username,name,bio} = data
+    const router = useRouter()
+    const path = router.query.id
+    const {username,name,bio,followed_by_user} = data
     const imageUrl = data && data.profile_image &&  data.profile_image.medium
+
+    const getButton1text = ()=>{
+        return path=='me' ? "Edit profile" : (followed_by_user ? 'Following' : 'Follow')
+    }
+    const getButton2text = ()=>{
+        return path=='me' ? "View archive" : (followed_by_user ? 'Message' : '')
+    }
+    const isFollowButton = getButton1text() == "Follow"
     return(
         <div className={styles.container}>
             <div className={styles.imageAndStats}>
@@ -14,8 +25,8 @@ const ProfileMain = ({data})=>{
                 <div className={styles.stats}>
                     <div>{username}</div>
                     <div className={styles.buttonsContainer}>
-                        <button><strong>Edit profile</strong></button>
-                        <button><strong>View archive</strong></button>
+                        {getButton1text()&&<button className={isFollowButton && styles.followButton}><strong>{getButton1text()}</strong></button>}
+                        {getButton2text() &&<button><strong>{getButton2text()}</strong></button>}
                     </div>
                 </div>
             </div>

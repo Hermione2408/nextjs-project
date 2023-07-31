@@ -4,7 +4,7 @@ import styles from "./bookmarkPhotos.module.css"
 const BookmarkPhotos = ()=>{
     return(
         <div>
-            Bookmark
+            Bookmark (to be implemented)
         </div>
     )
 }

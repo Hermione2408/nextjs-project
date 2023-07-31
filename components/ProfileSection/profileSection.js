@@ -19,17 +19,26 @@ const ProfileSection = ({userData}) => {
   const switchFunction = (tab)=>{
     setSelectedTab(tab)
   }
-  console.log(selectedTab,"SELECTED T")
+  const {username,name,bio,followed_by_user} = userData
+  
+  console.log(selectedTab,userData,"SELECTED T")
   return (
     <div className={styles.container}>
       {/* Profile Information */}
       <ProfileHeaderMob data={userData} />
       <ProfileMain data={userData} />
-      <ProfileStats data={userData} />
+      
+      {followed_by_user ?(
+      <><ProfileStats data={userData} />
       <ViewSwitcher selectedTab={selectedTab} switchViewFunction={switchFunction} />
 
       {
         selectedTab == 'grid'? <PhotosGridView data={userData.photos} /> : (selectedTab == 'list' ? <ProfileFeed data={userData.photos} /> : (selectedTab == 'tagged' ? <TaggedPhotos /> : <BookmarkPhotos />))
+      }
+      </>):(
+      <div style={{textAlign:'center'}}>
+        this accout is private
+      </div>)
       }
       
     </div>

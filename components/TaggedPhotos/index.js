@@ -3,7 +3,7 @@ import styles from "./taggedPhotos.module.css"
 const TaggedPhotos = ()=>{
     return(
         <div>
-            Tagged
+            Tagged photos (to be implemented)
         </div>
     )
 }

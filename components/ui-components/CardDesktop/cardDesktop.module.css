@@ -43,3 +43,23 @@
   .icon {
     margin-right: 16px;
   }
+
+  .card {
+    position: relative;
+    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+    /* Add more styles as per your need */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Enlarge the card on hover */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add some shadow for 3D effect */
+}
+
+.iconSectionHidden {
+    display: none;
+    transition: opacity .2s ease-in-out;
+}
+
+.card:hover .iconSectionHidden {
+    display: block;
+}

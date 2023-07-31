@@ -5,7 +5,7 @@ import NavBarMobile from '../../components/NavBarMobile/navBarMobile';
 import ProfileSection from '../../components/ProfileSection/profileSection';
 import ProfileStats from '../../components/ProfileStats';
 import styles from "./profile.module.css"
-
+import Loading from '../../components/Loading/loading';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 export default function Page({isMobileView}) {
@@ -13,7 +13,7 @@ export default function Page({isMobileView}) {
   const router = useRouter()
   let id = router.query.id
   const [userDetails,setUserDetails]=useState({})
-
+  const [loading,setLoading] = useState(true)
   const fetchDetails = async(username)=>{
     const response = await axios.get(`https://api.unsplash.com/users/${username}`, {
     headers: {
@@ -22,9 +22,11 @@ export default function Page({isMobileView}) {
   });
 
   if (response.status !== 200) {
+    setLoading(false)
     throw new Error('Failed to fetch photos');
   }
   setUserDetails(response.data)
+  setLoading(false)
   return ;
   }
   console.log(userDetails,'data')
@@ -34,7 +36,9 @@ export default function Page({isMobileView}) {
     fetchDetails(id)
   },[router.query])
   return (
-    <div className={styles.container}>
+    <>
+    {loading ? <Loading />:(
+      <div className={styles.container}>
     { !isMobileView && <NavbarDesktop />}
     <div className={styles.home}>
      {Object.keys(userDetails).length>0 && <ProfileSection userData={userDetails} photosData={userDetails.photos} />}
@@ -43,6 +47,7 @@ export default function Page({isMobileView}) {
       {isMobileView && <NavBarMobile/>}
     </div>
     {!isMobileView && <SideBarDesktop/>}
-   </div>
+   </div>)}
+   </>
   )
 }

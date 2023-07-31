@@ -7,7 +7,7 @@ import Create from '../../assets/img/svg/create.png';
 import Reels from '../../assets/img/svg/reels.png';
 // import Message from '../../assets/img/svg/message.png';
 import Profile from '../../assets/img/svg/profile-picture.jpg';
-
+import Tooltip from '../Tooltip';
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 const NavBarMobile = () => {
@@ -22,12 +22,15 @@ const NavBarMobile = () => {
                         alt="Home"
                     />
                 </Link>
+                <Tooltip content={"To be implemented"}>
                 <Image className={styles.icon}
                     src={Search}
                     width={24}
                     height={24}
                     alt="Search"
                 />
+            </Tooltip> 
+                
                 <Image className={styles.icon}
                     src={Create}
                     width={24}
