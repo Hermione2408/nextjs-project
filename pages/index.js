@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Loading from '../components/Loading/loading';
 import _ from 'lodash';
+import EmptyState from '../components/ui-components/EmptyState';
 
 export default function Home({isMobileView}) {
   console.log(isMobileView)
@@ -45,7 +46,12 @@ export default function Home({isMobileView}) {
      { !isMobileView && <NavBarDesktop className={styles.navbarDesktop} />}
      <div className={styles.home}>
       <div className={styles.homeFeed}>
-      {(posts&&posts.length>0) &&<HomeFeed isMobileView={isMobileView} data={posts} fetchingFunction={fetchMorePhotos} />}
+      {(posts&&posts.length>0) ?(<HomeFeed isMobileView={isMobileView} data={posts} fetchingFunction={fetchMorePhotos} />)
+      :(
+        <EmptyState message={"No photos to show , probably because of unspash rate limit"} />
+      )
+      }
+      
       </div>
       <div>
       {isMobileView && <NavBarMobile/>}
